@@ -1,0 +1,18 @@
+<!-- 
+    - sem data-bs-dismiss="alert" para não sumir no html
+    - classe show retirada - efeito bootstrap para desaparecer/aparecer;
+-->
+
+<!--
+<div style="display: none;" id="alertElement" class="alert alert-dismissible fade" role="alert" #alertElement>
+    <span></span>
+    <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+</div>
+-->
+<div id="alertGroup">
+    <!-- id="{{'alert-' + (i+1)}}" -->
+    <div *ngFor="let alert of alertService.alerts" [class]="cssAlert(alert)" role="alert" >
+        <span [innerHtml]="alert.message"></span>
+        <button type="button" (click)="alertService.close(alert)" class="btn-close" aria-label="Close"></button>
+    </div>
+</div>

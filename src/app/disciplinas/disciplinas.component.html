@@ -1,0 +1,68 @@
+<app-alert></app-alert>
+
+<div class="conteudo-titulo">
+  <p>Disciplinas</p>
+</div>
+
+<!-- 
+    two-way data binding -> [(ngModel)] () -> evento e [] -> alteração prop html. 
+                        -> Funciona tanto do tempate para o controller e vice versa
+-->
+
+<form style="background-color: white;" class="p-3 mb-4" action="" #formDisciplina="ngForm" (ngSubmit)="salvar()">
+
+  <div class="d-flex mb-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="codigo" class="form-label">Código <font style="color: red;">*</font></label>
+        <input type="text" class="form-control" style="width: 130px;" name="codigo" [(ngModel)]="codigo" required />
+      </div>
+
+      <div class="col-sm-8">
+        <label for="nome" class="form-label">Nome <font style="color: red;">*</font></label>
+        <input type="text" class="form-control" style="width: 300px;" name="nome" [(ngModel)]="nome" required />
+        <!--Por ser two way databiding, o valor alterado no template é atualizado aqui <span>{{nome}}</span>-->
+      </div>  
+    </div>
+  </div>
+
+  <button [ngClass]="!formDisciplina.valid ? 'desabilitado' : ''" class="btn btn-primary" [disabled]="!formDisciplina.valid">Salvar</button>
+    &nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+</form>
+
+<div class="d-flex mb-3">
+  <form action="" #formPesquisa="ngForm" (ngSubmit)="pesquisar()" id="formPesquisa">
+
+    <input type="text" class="form-control campoPesquisa" style="width: 130px;" name="codigo" [(ngModel)]="codigoPesquisa" placeholder="Código">
+    <input type="text" class="form-control campoPesquisa" style="width: 300px;" name="nome" [(ngModel)]="nomePesquisa" placeholder="Nome">
+
+    <div class="campoPesquisa" style="margin-right: 20px;">
+      <label for="ordenacao" class="form-check-label">Ordenação:</label>
+
+      <div class="containerOpcoes"> 
+        <span class="form-check" style="margin-right: 15px;">
+          <input type="radio" class="form-check-input" name="ordenacao" [(ngModel)]="ordenacao" value="codigo">
+          <label class="form-check-label">Código</label>
+        </span>
+        <span class="form-check" style="margin-right: 15px;">
+          <input type="radio" class="form-check-input" name="ordenacao" [(ngModel)]="ordenacao" value="nome">
+          <label class="form-check-label">Descrição</label>
+        </span>
+      </div>
+    </div>
+
+    <button type="submit" title="Pesquisar" class="btn btn-primary btn-sm">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
+
+<!--TABELA PADRONIZADA. $event contera a disciplina-->
+<app-tabela [header]="header"
+              [props]="props"
+              [registros]="disciplinas"
+              [editando]="editando"
+              (onEditar)="editar($event)"
+              (onExcluir)="excluir($event)">
+</app-tabela>

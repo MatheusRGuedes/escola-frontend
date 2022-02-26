@@ -1,0 +1,62 @@
+.conteiner-vazio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0px;
+    font-weight: 700;
+    color: #d8dce6;
+}
+
+.tabela-customizada {
+    width: 100%;
+    background-color: white;
+}
+
+.tabela-customizada th {
+    background-color: rgb(241, 244, 253);
+    color: #7d7d8f; /*#34344d*/
+    font-size: 0.95rem;
+    padding: .35rem;
+}
+
+.tabela-customizada p {
+    margin-bottom: 0px;
+}
+
+/* REM deixa a font com tamanho do contexto do BODY
+    deixar o body com font de */
+.tabela-customizada tbody tr {
+    font-size: 0.9rem;
+    color: rgb(102, 102, 105);
+    border-bottom: 1px solid #dddddd;
+}
+.tabela-customizada tbody tr:last-child {
+    border-bottom: 2px solid #f3f3f3;
+}
+
+.linhaMarcada {
+    background-color: rgb(220, 231, 255);
+}
+
+.tabela-customizada td{
+    padding: .35rem;
+}
+
+
+.pagination-panel {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+ }
+.pagination-panel span {
+    margin-left: 35px;
+}
+
+
+/*operador para sobrescrever estilo do componente de paginação*/
+.pagination-reutilizavel-control /deep/ .ngx-pagination {
+    display: inline-block;
+    padding: 0px;
+}

@@ -1,0 +1,37 @@
+/*@import '/src/assets/styles/reusable-styles.css'; */
+
+.conteudo-titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.conteudo-titulo div {
+    display: inline-block;
+}
+
+.conteudo-titulo p {
+    font-size: 1.25rem;
+}
+
+.desabilitado {
+    pointer-events: all;
+    cursor: not-allowed;
+}
+
+.campoPesquisa {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.containerOpcoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* only previne q navegadores mais antigo q n suportam media querie d aplicar os estilos*/
+@media only screen and (max-width: 576px) { 
+    input[name="nome"], textarea {
+        width: 100% !important;
+    }
+}

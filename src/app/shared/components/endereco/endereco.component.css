@@ -1,0 +1,15 @@
+.inputBlock {
+    margin: 0px 15px 15px 0;
+}
+
+form label {
+    font-weight: 500;
+}
+
+.containerErro {
+    color: red;
+    font-size: 14px;
+}
+.containerErro span {
+    line-height: 15px;
+}

@@ -1,0 +1,8 @@
+.main-content {
+    height: 100vh; 
+    background-color: rgb(241, 244, 253);
+}
+
+.dinamic-content {
+    padding: 0.5rem 1rem 0 1rem;
+}

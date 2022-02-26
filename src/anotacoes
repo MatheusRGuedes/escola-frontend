@@ -1,0 +1,56 @@
+# -------------------------- Realizados: -------------------------- 
+
+- Desenvolvimento dos mapeamentos para o servidor spring (disciplinas/professores);
+- Adicionar tira de endereço;
+- criar mapeamento no java para o endereco e testar;
+- Ajustar para ativar validação em campos endereço;
+- adição demais campos endereço;
+- Adicionar validação além da Obrigatoriedade caso necessário; 
+- Ajuste de layout/tratamento tira de endereço;
+- Utilizar a api ViaCep para busca endereço pelo cep;
+- Verificar questão da popup dados endereço /ajuste css (https://www.digitalocean.com/community/tutorials/css-prevent-line-break-pt);
+- Adicionar camada de serviço, api java (disc e prof);
+- Retirar salário professor (comentar), adicionar sexo e formação;
+- separar tabela registros da tela de gravação/edição
+- permitir mais de uma formação (nome e tipo) - professores
+- adicionar data nascimento - professores
+- realizar testes no mozila e explorer
+
+# -------------------------- Andamento: ----------------------------
+- Add filtros pesquisa - lista professores 
+
+https://stackoverflow.com/questions/57946799/node-js-application-not-detected-by-heroku
+    
+# -------------------------- Futuros: ----------------------------- 
+
+- Add classe generica para pessoa, atributos: ( id, nome, ativo, Endereco);
+
+- Adicionar padrão DTO no java, pr receber dados do browser 
+    --> (https://marioalvial.medium.com/blindando-sua-api-spring-boot-com-o-padr%C3%A3o-dto-44f97020d1a0)
+    --> resolve problema d envio d propriedades erradas (id) para requisições
+
+- ver sobre transações camada de serviço
+
+- Dividir aplicação em módulos separados pr professores, alunos e administradores
+    --> onde cada um terá seus próprios recursos;
+    --> usar sistema como inspiração https://deltasge.com.br/site/sistema-gestao-escolar-professor-online/
+    --> cadastro alunos tempo: 5
+
+- fazer testes unitários na api;
+
+- criar arquivo css para conter estilos globais usados em vários lugares; 
+
+- trocar o componente tabela criado por um customizado na listagem preofessores; (ainda nao)
+
+- criar componente de mensagens de validação de erro (passar form e campo especifico);
+- criar arquivo para agrupar funções uteis de data;
+
+# -------------------------- Estudos: ------------------------------
+
+- RXJS;
+- streams no java;
+    --> https://pt.slideshare.net/helderdarocha/curso-de-java-introduo-a-lambda-e-streams (slide 11)
+
+# ---------------------------Biliotecas analizar ------------------
+
+- usar o angular material em projeto aparte para testar os componentes, como muda o layout/design, etc.

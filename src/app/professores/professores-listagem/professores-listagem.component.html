@@ -1,0 +1,57 @@
+<app-alert></app-alert>
+
+<div class="conteudo-titulo mb-2">
+    <p>Lista Professores</p>
+</div>
+
+<!-- ./ mantem a rota filha -->
+<a class="btn btn-primario mb-4" routerLink="./novo">Novo professor</a>
+
+<div class="d-flex mb-4">
+    <form action="" [formGroup]="formPesquisa" (ngSubmit)="pesquisar()">
+        <div class="d-flex">
+            <div class="blocoInput">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control" style="width: 300px;" placeholder="Nome" formControlName="nome">
+            </div>
+
+            <div class="blocoInput">
+                <label class="form-label">Data nascimento</label>
+                <input type="text" class="form-control" mask="00/00/0000" style="width: 150px;" 
+                    id="dataNascimento" size="12" placeholder="dd/mm/yyyy" formControlName="dataNascimento">
+
+                <div *ngIf="campoInvalido('dataNascimento')" class="containerErro">
+                    <span *ngIf="dataNascimento.errors?.invalid">
+                        Data deve ser válida.
+                    </span>
+                </div>
+            </div>
+
+            <div class="blocoInput">
+                <label class="form-label">Cep</label>
+                <input type="text" class="form-control" placeholder="Ex.: 12345-678" size="20" maxlength="9" 
+                    mask="00000-000" [validation]="false" formControlName="cep">
+
+                <div *ngIf="campoInvalido('cep')" class="containerErro">
+                    <span *ngIf="cep.errors?.minlength">
+                        Deve ter ao menos 8 caracteres.
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex align-self-end">
+                <button type="submit" title="Pesquisar" class="btn btn-primario btn-sm" [disabled]="!formPesquisa.valid">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<app-tabela [header]="header"
+              [props]="props"
+              [registros]="professores"
+              [config]="pageConfig"
+              (onEditar)="editar($event)"
+              (onExcluir)="excluir($event)">
+</app-tabela>

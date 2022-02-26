@@ -1,0 +1,40 @@
+<div class="login-container">
+
+    <h2>Entrar</h2>
+
+    <form action="" [formGroup]="loginForm" (submit)="submitData()">
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="login-field" formControlName="email" 
+                [class.field-error]="emailValidation != ''">
+            <!--<p>{{loginForm.value.username}}</p>-->
+
+            <div *ngIf="emailValidation != ''" class="containerErro">
+                <div>{{emailValidation}}</div>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="login-field" 
+                [class.field-error]="passwordValidation != ''" formControlName="password">
+            <!--<p>{{loginForm.value.password}}</p>-->
+
+            <div *ngIf="passwordValidation != ''" class="containerErro">
+                <div>{{passwordValidation}}</div>
+            </div>
+        </div>
+
+        <div *ngIf="isInvalidUser" 
+            class="alert alert-danger alert-dismissible fade show">
+            Conta inexistente para este email.
+        </div>
+
+        <button class="login-button" type="submit">Login</button>
+
+        <!--<p>{{'Form Value: ' + (loginForm.value | json)}}</p>
+        <p>{{'Form Status: ' + loginForm.status}}</p>
+        <p>{{'Email Errors: ' + email!.errors?.required + ' ' + email!.errors?.email}}</p>-->
+    </form>
+</div>

@@ -1,0 +1,35 @@
+.conteudo-titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.conteudo-titulo div {
+    display: inline-block;
+}
+.conteudo-titulo p {
+    font-size: 1.25rem;
+}
+
+.campoPesquisa {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.containerErro {
+    color: red;
+    font-size: 14px;
+}
+
+.btn-primario {
+    color: #fff;
+    background-color: #2199e8;
+    border-color: #2199e8;
+}
+
+form .form-label {
+    font-weight: 500;
+}
+
+.blocoInput {
+    margin-right: 15px;
+}

@@ -1,0 +1,51 @@
+.conteudo-titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.conteudo-titulo div {
+    display: inline-block;
+}
+.conteudo-titulo p {
+    font-size: 1.25rem;
+}
+
+form .form-label {
+    font-weight: 500;
+}
+
+.label-divisao {
+    margin: 0 15px 20px 0;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.containerOpcoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerErro {
+    color: red;
+    font-size: 14px;
+}
+
+#dataNascimento {
+    width: 201px;
+}
+
+.btn-primario {
+    color: #fff;
+    background-color: #2199e8;
+    border-color: #2199e8;
+}
+
+@media only screen and (max-width: 992px) {
+    form div .blocoInput {
+        width: 50% !important;
+    }
+
+    form .segunda-linha-esq {
+        width: 60%;
+    }
+}

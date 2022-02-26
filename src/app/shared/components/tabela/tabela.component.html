@@ -1,0 +1,79 @@
+<table class="tabela-customizada">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col" *ngFor="let item of header">{{item}}</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngIf="registros.length == 0">
+      <td [attr.colspan]="header.length + 2">
+        <div class="conteiner-vazio">
+          <i class="fas fa-inbox" style="font-size: 3rem;"></i>
+          <p>Nenhum dado.</p>
+        </div>
+      </td>
+    </tr>
+
+    <tr *ngFor="let obj of registros | paginate: { itemsPerPage: config.qntddPorPag, currentPage: config.paginaAtual }"
+        [class.linhaMarcada]="editando == obj"> <!--let i = index-->
+  
+      <td scope="row">
+        <i *ngIf="editando == obj" class="fa fa-pen-square"></i> {{obj.id}} <!--{{ qntddPorPag * (paginaAtual - 1)  +  (i+1) }}-->
+      </td>
+
+      <!-- for para percorrer as propiedades de obj -->
+      <ng-template ngFor let-prop [ngForOf]="props">
+        <td *ngIf="prop.indexOf('.') != -1; else elseBlock"> <!--se for propriedade acessando outra-->
+          {{obj[prop.split('.')[0]][prop.split('.')[1]]}}
+        </td>
+
+        <ng-template #elseBlock>
+          <ng-container [ngSwitch]="(obj[prop] | typeof)">
+            <!-- symbol pr aparecer R$ -->
+            <td *ngSwitchCase="'number'">{{obj[prop] | currency:'BRL':'symbol'}}</td>
+            <td *ngSwitchCase="'date'">{{obj[prop] | date:'shortDate'}}</td>
+            <td *ngSwitchCase="'array'">
+                <p *ngFor="let item of obj[prop]">{{item.nome}}</p>
+            </td>
+            <td *ngSwitchCase="'object'">
+              <app-popover buttonIcon="eye">
+                <p>{{obj[prop] | objectToString}}</p>
+              </app-popover>
+            </td>
+            <td *ngSwitchDefault>{{obj[prop]}}</td>
+          </ng-container>
+        </ng-template>
+      </ng-template>
+  
+      <td>
+        <button class="btn btn-warning btn-sm" title="Editar" (click)="editar(obj)"><i class="fas fa-pencil-alt"></i></button>
+        &nbsp;
+        <button class="btn btn-danger btn-sm" title="Excluir" (click)="excluir(obj)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="registros.length > 0" class="pagination-panel">
+  <!-- Painel de controle das páginas -->
+  <pagination-controls class="pagination-reutilizavel-control" 
+      (pageChange)="config.paginaAtual = $event"
+      (pageBoundsCorrection)="config.paginaAtual = $event"
+      [responsive]="responsive"
+      previousLabel="Anterior" 
+      nextLabel="Próximo">
+  </pagination-controls>
+
+  <!-- Opção mudar qtdd itens por página -->
+  <span>
+    Mostrando 
+    <select [(ngModel)]="config.qntddPorPag">
+      <option value="5" selected>5</option>
+      <option value="10">10</option>
+    </select>
+    itens por página.
+  </span>
+</div>

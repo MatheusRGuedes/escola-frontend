@@ -1,0 +1,120 @@
+<app-alert></app-alert>
+
+<div class="conteudo-titulo">
+    <p>Professores</p>
+</div>
+
+<a class="btn btn-primario mb-3" routerLink="/professores">Lista professores</a>
+
+<form style="background-color: white;" class="p-2 mb-3" action="" [formGroup]="form" (ngSubmit)="gravar()">
+    
+    <div class="d-flex flex-row flex-wrap">
+        
+        <div class="blocoInput" style="width: 30%; margin: 0 15px 15px 0;">
+            <label for="nome" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" id="nome" placeholder="Informe o nome" formControlName="nome">
+
+            <div *ngIf="campoInvalido('nome')" class="containerErro">
+                <span *ngIf="nome.errors?.maxlength">
+                    Nome deve ter até 255 caracteres.
+                </span>
+                <span *ngIf="nome.errors?.required">
+                    Nome é obrigatório.
+                </span>
+            </div>
+        </div>
+
+        <div style="margin: 0 15px 15px 0;">
+            <label for="sexo" class="form-label">Sexo</label>
+            
+            <div class="containerOpcoes"> 
+                <span class="form-check" style="margin-right: 15px;">
+                  <input type="radio" class="form-check-input" name="sexo" formControlName="sexo" value="M">
+                  <label class="form-check-label">Masculino</label>
+                </span>
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="sexo" formControlName="sexo" value="F">
+                  <label class="form-check-label">Feminino</label>
+                </span>
+            </div>
+
+            <div *ngIf="campoInvalido('sexo')" class="containerErro">Sexo é obrigatório.</div>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <div style="margin: 0 15px 15px 0;">
+            <label for="dataNascimento" class="form-label">Data Nascimento</label>
+            <input type="text" mask="00/00/0000" class="form-control" id="dataNascimento" size="12" placeholder="dd/mm/yyyy" formControlName="dataNascimento">
+            
+            <div *ngIf="campoInvalido('dataNascimento')" class="containerErro">
+                <span *ngIf="dataNascimento.errors?.invalid">
+                    Data inválida.
+                </span>
+                <span *ngIf="dataNascimento.errors?.isNotPast">
+                    Data deve ser anterior a de hoje.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!--Campos de Endereço aqui-->
+    <endereco [group]="this.enderecoGroup"></endereco>
+
+    <div class="my-4">
+        <span class="label-divisao">Informações de formação</span>
+        <button type="button" class="btn btn-sm btn-secondary" (click)="addFormacao()">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <table formArrayName="formacoes">
+            <tr>
+                <td style="min-width: 300px;"><label for="nome" class="form-label">Nome:</label></td>
+                <td><label for="tipo" class="form-label">Tipo:</label></td>
+            </tr>
+
+            <tr *ngFor="let formacao of formacoesForm.controls; let i = index" [formGroupName]="i">
+
+                <input type="hidden" #idFormacao formControlName="id">
+                
+                <td style="padding-right: 15px;">
+                    <input type="text" id="nome-{{i}}" class="form-control" size="30" maxlength="255" formControlName="nome">
+                    <div *ngIf="campoFormacaoInvalido('nome', i)" class="containerErro">
+                        <span *ngIf="getNomeFormacaoControl(i).errors?.maxlength">
+                            Nome deve ter até 255 caracteres.
+                        </span>
+                        <span *ngIf="getNomeFormacaoControl(i).errors?.required">
+                            Nome é obrigatório.
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <select class="form-select" id="tipo-{{i}}" formControlName="tipo">
+                        <option value="">Selecione...</option>
+                        <option value="BACHARELADO">Bacharelado</option>
+                        <option value="LICENCIATURA">Licenciatura</option>
+                        <option value="GRADUACAO">Graduação</option>
+                        <option value="POS_GRADUACAO">Pos-Graduação</option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" style="margin-left: 15px" class="btn btn-sm btn-secondary" (click)="deleteFormacao(i, idFormacao.value)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--<div>
+        Estrutura Formações <br/> 
+        {{formacoesForm.value | json}}
+        <br/>
+    </div>-->
+
+    <button type="submit" class="btn btn-primario">Salvar</button>
+    &nbsp;&nbsp;
+    <button *ngIf="urlPath != 'editar'" type="button" class="btn btn-secondary" id="cancelar" (click)="limparForm()">
+        Cancelar
+    </button>
+</form>
