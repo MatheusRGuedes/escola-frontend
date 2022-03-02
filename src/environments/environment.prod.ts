@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_FAKE: '/'
+  API_SPRING: 'https://escolabackend.herokuapp.com/'
 };
