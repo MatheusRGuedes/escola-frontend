@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
           Validators.required
         ]
       ],
-      password: ['', Validators.required]
+      password: ['12345', Validators.required]
     });
   }
 

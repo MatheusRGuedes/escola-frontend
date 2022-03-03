@@ -23,12 +23,13 @@ import { ProfessoresComponent } from './professores/professores/professores.comp
 const appRoutes : Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'disciplinas', component: DisciplinasComponent },
+  { path: 'disciplinas', component: DisciplinasComponent, canActivate: [AuthGuard] },
   { 
     path: 'professores', 
-    loadChildren: () => import('./professores/professores.module').then(m => m.ProfessoresModule) 
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./professores/professores.module').then(m => m.ProfessoresModule)
   },
-  { path: '', component: ProfessoresListagemComponent },
+  { path: '', component: LoginComponent },
   { path: '**', component: LoginComponent }
 ];
 
