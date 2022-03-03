@@ -45,6 +45,8 @@ https://stackoverflow.com/questions/57946799/node-js-application-not-detected-by
 - criar componente de mensagens de validação de erro (passar form e campo especifico);
 - criar arquivo para agrupar funções uteis de data;
 
+- Criar arquivo cors no spring para acesso de origens
+
 # -------------------------- Estudos: ------------------------------
 
 - RXJS;

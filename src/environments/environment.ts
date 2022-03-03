@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_FAKE: 'http://localhost:3000/',
-  API_SPRING: 'http://localhost:8080/escola-api/'
+  API_SPRING: 'https://escolabackend.herokuapp.com/'
 };
 
 /*

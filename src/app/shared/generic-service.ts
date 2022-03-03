@@ -12,7 +12,7 @@ export class GenericService<T> {
     constructor(protected http: HttpClient, private API_URL :string) {
         this.options = {
             headers: new HttpHeaders({
-                'Access-Control-Allow-Origin': "http://localhost:4200/angular-escola/"
+                'Access-Control-Allow-Origin': "https://escolabackend.herokuapp.com/"
             })
         }
     }
