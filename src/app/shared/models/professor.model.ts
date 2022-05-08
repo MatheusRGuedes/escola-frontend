@@ -62,8 +62,11 @@ export class Professor implements ProfessorModel {
         if (data) {
             let month = (data.getMonth() + 1).toString();
             if (month.length == 1) month = "0"+month;
+
+            let day = data.getDate().toString();
+            if (day.length == 1) day = "0"+day;
             
-            return data.getDate() +"/"+ month +"/"+ data.getFullYear();
+            return day +"/"+ month +"/"+ data.getFullYear();
         }
         return "";
     }

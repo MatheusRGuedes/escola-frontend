@@ -15,9 +15,11 @@
 - permitir mais de uma formação (nome e tipo) - professores
 - adicionar data nascimento - professores
 - realizar testes no mozila e explorer
+- Criar arquivo cors no spring para acesso de origens
+- ajuste combo e validade UF
 
 # -------------------------- Andamento: ----------------------------
-- Add filtros pesquisa - lista professores 
+- Melhorar filtro pesquisa - lista professores 
 
 https://stackoverflow.com/questions/57946799/node-js-application-not-detected-by-heroku
     
@@ -44,8 +46,6 @@ https://stackoverflow.com/questions/57946799/node-js-application-not-detected-by
 
 - criar componente de mensagens de validação de erro (passar form e campo especifico);
 - criar arquivo para agrupar funções uteis de data;
-
-- Criar arquivo cors no spring para acesso de origens
 
 # -------------------------- Estudos: ------------------------------
 

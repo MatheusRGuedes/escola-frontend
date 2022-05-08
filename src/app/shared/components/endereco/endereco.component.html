@@ -41,7 +41,10 @@
 
         <div style="margin-bottom: 15px;">
             <label for="estado" class="form-label">Estado</label>
-            <input type="text" class="form-control" id="estado" placeholder="Ex.: RJ" size="15" maxlength="2" formControlName="uf">
+            <select class="form-select" aria-label="Estado" id="estado" formControlName="uf">
+                <option value="">Selecione...</option>
+                <option *ngFor="let uf of listaUfs" value="{{uf.codigo}}">{{uf.descricao}}</option>
+            </select>
 
             <div *ngIf="campoInvalido('uf')" class="containerErro">
                 <span *ngIf="uf.errors?.required">

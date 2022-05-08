@@ -12,6 +12,36 @@ export class EnderecoComponent implements OnInit {
   @Input('group') 
   form :FormGroup = new FormGroup({});
 
+  public listaUfs = [
+    {descricao: "Rondônia", codigo: "RO"},
+	  {descricao: "Acre", codigo: "AC"},
+	  {descricao: "Amazonas", codigo: "AM"},
+    {descricao: "Rorâima", codigo:"RR"},
+	  {descricao: "Pará", codigo: "PA"},
+	  {descricao: "Amapá", codigo: "AP"},
+    {descricao: "Tocantíns", codigo: "TO"},
+	  {descricao: "Maranhão", codigo: "MA"},
+    {descricao: "Piauí", codigo: "PI"},
+    {descricao: "Ceará", codigo: "CE"},
+    {descricao: "Rio Grande do Norte", codigo: "RN"},
+    {descricao: "Paraíba", codigo: "PB"},
+    {descricao: "Pernambuco", codigo: "PE"},
+    {descricao: "Alagoas", codigo: "AL"},
+    {descricao: "Sergipe", codigo: "SE"},
+    {descricao: "Bahia", codigo: "BA"},
+    {descricao: "Minas Gerais", codigo: "MG"},
+    {descricao: "Espirito Santo", codigo: "ES"},
+    {descricao: "Rio de Janeiro", codigo: "RJ"},
+    {descricao: "São Paulo", codigo: "SP"},
+    {descricao: "Paraná", codigo: "PR"},
+    {descricao: "Santa Catarina", codigo: "SC"},
+    {descricao: "Rio Grande do Sul", codigo: "RS"},
+    {descricao: "Mato Grosso do Sul", codigo: "MS"},
+    {descricao: "Mato Grosso", codigo: "MT"},
+    {descricao: "Goiás", codigo: "GO"},
+    {descricao: "Distrito Federal", codigo: "DF"}
+  ];
+
   constructor(private service :ConsultaCepService) { }
 
   ngOnInit(): void { }
